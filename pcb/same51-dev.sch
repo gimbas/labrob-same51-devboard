@@ -3164,6 +3164,15 @@ body 2.00 x 3.00 mm</description>
 <text x="-5.08" y="-2.54" size="0.8" layer="25" font="vector" ratio="15">&gt;NAME</text>
 <pad name="4" x="3.81" y="0" drill="1.1"/>
 </package>
+<package name="2X1_2.54">
+<pad name="1" x="-1.27" y="0" drill="1.1" shape="square" rot="R90"/>
+<pad name="2" x="1.27" y="0" drill="1.1" rot="R90"/>
+<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="1.27" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.27" x2="2.54" y2="1.27" width="0.127" layer="21"/>
+<wire x1="2.54" y1="1.27" x2="2.54" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="2.54" y1="-1.27" x2="-2.54" y2="-1.27" width="0.127" layer="21"/>
+<text x="-2.54" y="-2.54" size="0.8" layer="21" font="vector" ratio="15">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="K">
@@ -3283,6 +3292,23 @@ body 2.00 x 3.00 mm</description>
 <connect gate="-2" pin="S" pad="2"/>
 <connect gate="-3" pin="S" pad="3"/>
 <connect gate="-4" pin="S" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="2" prefix="J">
+<gates>
+<gate name="-1" symbol="K" x="0" y="2.54"/>
+<gate name="-2" symbol="K" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="2X1_2.54">
+<connects>
+<connect gate="-1" pin="S" pad="1"/>
+<connect gate="-2" pin="S" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3880,6 +3906,9 @@ body 2.00 x 3.00 mm</description>
 <part name="J1" library="Connectors &gt; Header" deviceset="4" device=""/>
 <part name="SUPPLY23" library="Utility &gt; Power Symbols" deviceset="VDD" device=""/>
 <part name="SUPPLY29" library="Utility &gt; Power Symbols" deviceset="VDD" device=""/>
+<part name="J11" library="Connectors &gt; Header" deviceset="2" device=""/>
+<part name="SUPPLY30" library="Utility &gt; Power Symbols" deviceset="VSUP" device=""/>
+<part name="GND34" library="Utility &gt; Power Symbols" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4553,6 +4582,18 @@ body 2.00 x 3.00 mm</description>
 <instance part="SUPPLY29" gate="VDD" x="274.32" y="160.02" smashed="yes">
 <attribute name="VALUE" x="274.32" y="162.814" size="1.778" layer="96" align="bottom-center"/>
 </instance>
+<instance part="J11" gate="-1" x="218.44" y="165.1" smashed="yes">
+<attribute name="NAME" x="220.98" y="164.338" size="1.524" layer="95"/>
+</instance>
+<instance part="J11" gate="-2" x="218.44" y="162.56" smashed="yes">
+<attribute name="NAME" x="220.98" y="161.798" size="1.524" layer="95"/>
+</instance>
+<instance part="SUPPLY30" gate="G$1" x="213.36" y="165.1" smashed="yes">
+<attribute name="VALUE" x="213.36" y="167.894" size="1.778" layer="96" align="bottom-center"/>
+</instance>
+<instance part="GND34" gate="1" x="213.36" y="160.02" smashed="yes">
+<attribute name="VALUE" x="213.36" y="159.766" size="1.778" layer="96" align="top-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4818,6 +4859,11 @@ body 2.00 x 3.00 mm</description>
 <pinref part="J10" gate="-6" pin="S"/>
 <pinref part="J10" gate="-7" pin="S"/>
 <pinref part="J10" gate="-8" pin="S"/>
+</segment>
+<segment>
+<pinref part="GND34" gate="1" pin="GND"/>
+<pinref part="J11" gate="-2" pin="S"/>
+<wire x1="213.36" y1="162.56" x2="215.9" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -5842,6 +5888,11 @@ body 2.00 x 3.00 mm</description>
 <wire x1="218.44" y1="127" x2="226.06" y2="127" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="127" x2="226.06" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="SUPPLY27" gate="G$1" pin="VSUP"/>
+</segment>
+<segment>
+<pinref part="J11" gate="-1" pin="S"/>
+<wire x1="215.9" y1="165.1" x2="213.36" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="SUPPLY30" gate="G$1" pin="VSUP"/>
 </segment>
 </net>
 <net name="VCC" class="0">
